@@ -17,5 +17,14 @@ export default {
 				starship: res.body
 			});
 		})
+	},
+
+	getStarships: function() {
+		request.get("http://swapi.co/api/starships/").end((err, res) => {
+			dispatcher.handleViewAction({
+				actionType: constants.SET_STARSHIPS,
+				starships: res.body
+			});
+		})
 	}
 }
