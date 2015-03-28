@@ -13,6 +13,10 @@ var _setStarship = function(ship) {
 	starship = ship;
 }
 
+var _resetStarship = function() {
+	starship = {};
+}
+
 var AppStore = _.extend(EventEmitter.prototype, {
 	emitChange: function() {
 		this.emit(CHANGE_EVENT);
@@ -39,6 +43,9 @@ var AppStore = _.extend(EventEmitter.prototype, {
 		switch(action.actionType) {
 			case constants.SET_STARSHIP:
 				_setStarship(action.starship);
+				break;
+			case constants.RESET_STARSHIP:
+				_resetStarship();
 				break;
 		}
 

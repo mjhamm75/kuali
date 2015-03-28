@@ -1,3 +1,4 @@
 export default {
+	RESET_STARSHIP: 'RESET_STARSHIP',
 	SET_STARSHIP: 'SET_STARSHIP'
 }
