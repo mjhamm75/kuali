@@ -7,5 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jason Hamm",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "6to5ify": "^4.1.1",
+    "browserify": "^9.0.3",
+    "gulp": "^3.8.11",
+    "gulp-less": "^3.0.2",
+    "reactify": "^1.1.0",
+    "require-dir": "^0.3.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
 }
