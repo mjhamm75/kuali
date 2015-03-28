@@ -65,7 +65,8 @@ export default React.createClass({
 			return (
 				<div>
 					<form className="form-inline spacer">
-						<div className="form-group">
+						<div className="ship-count">{starships.length} Ship(s)</div>
+						<div className="form-group ship-count-offset">
 							<label className="right-spacer">Ship name</label>
 							<input onChange={this.onChange.bind(this)} type="text" className="form-control" placeholder="Ship name" />
 						</div>
