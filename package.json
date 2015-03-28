@@ -12,6 +12,7 @@
     "6to5ify": "^4.1.1",
     "bootstrap": "^3.3.4",
     "browserify": "^9.0.3",
+    "events": "^1.0.2",
     "gulp": "^3.8.11",
     "gulp-less": "^3.0.2",
     "lodash": "^3.6.0",
