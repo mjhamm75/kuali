@@ -10,11 +10,20 @@ var starship = {};
 var starships = {};
 var pilot = {};
 var unfilteredList = {};
+var sortUp = true;
 
 var _filterShips = function(term) {
 	var list = _.clone(unfilteredList);
 	starships = list.filter(ship => {
 		return ship.name.indexOf(term) != -1;
+	}).sort((a, b) => {
+		if(a.cost_in_credits === "unknown") {
+			return true;
+		} else if(b.cost_in_credits === "unknown") {
+			return false;
+		} else {
+			return parseInt(a.cost_in_credits) < parseInt(b.cost_in_credits);
+		}
 	})
 	
 }
@@ -36,6 +45,10 @@ var _resetStarship = function() {
 	starship = {};
 }
 
+var _toggleSort = function() {
+		sortUp = !sortUp; 
+}
+
 var AppStore = _.extend(EventEmitter.prototype, {
 	emitChange: function() {
 		this.emit(CHANGE_EVENT);
@@ -53,15 +66,19 @@ var AppStore = _.extend(EventEmitter.prototype, {
 		return pilot;
 	},
 
+	getSortUp: function() {
+		return sortUp;
+	},
+
 	getStarships: function() {
 		if(!_.isEmpty(starships)) {
 			return starships.sort((a, b) => {
 					if(a.cost_in_credits === "unknown") {
 						return true;
 					} else if(b.cost_in_credits === "unknown") {
-						return true;
+						return false;
 					} else {
-						return parseInt(a.cost_in_credits) > parseInt(b.cost_in_credits);						
+						return parseInt(a.cost_in_credits) < parseInt(b.cost_in_credits);
 					}
 				});
 		} else {
@@ -90,6 +107,9 @@ var AppStore = _.extend(EventEmitter.prototype, {
 				break;
 			case constants.FILTER_SHIPS: 
 				_filterShips(action.filter);
+				break;
+			case constants.TOGGLE_SORT:
+				_toggleSort();
 				break;
 		}
 

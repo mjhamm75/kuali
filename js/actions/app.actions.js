@@ -65,5 +65,11 @@ export default {
 				pilot: res.body
 			});
 		})
+	},
+
+	toggleSort: function() {
+		dispatcher.handleViewAction({
+			actionType: constants.TOGGLE_SORT
+		});
 	}
 }

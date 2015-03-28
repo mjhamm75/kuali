@@ -10,6 +10,10 @@ function getStarships() {
 	return store.getStarships();
 }
 
+function getSortUp() {
+	return store.getSortUp();
+}
+
 export default React.createClass({
 	componentWillMount: function() {
 		store.addChangeListener(this._onChange);
@@ -17,7 +21,8 @@ export default React.createClass({
 
 	_onChange: function() {
 		this.setState({
-			starships: getStarships()
+			starships: getStarships(),
+			sortUp : getSortUp()
 		});
 	},
 
@@ -27,7 +32,8 @@ export default React.createClass({
 
 	getInitialState: function() {
 		return {
-			starships: getStarships()
+			starships: getStarships(),
+			sort: getSortUp()
 		}
 	},
 
@@ -38,6 +44,7 @@ export default React.createClass({
 
 	render: function() {
 		var starships = this.state.starships;
+		var sortUp = this.state.sortUp;
 		if(_.isEmpty(starships)) {
 			return (
 				<div className="spinner-margin">
@@ -62,6 +69,7 @@ export default React.createClass({
 					</li>
 				)
 			});
+			var className = sortUp ? "glyphicon glyphicon-arrow-up": "glyphicon glyphicon-arrow-down";
 			return (
 				<div>
 					<form className="form-inline spacer">
@@ -69,6 +77,9 @@ export default React.createClass({
 						<div className="form-group ship-count-offset">
 							<label className="right-spacer">Ship name</label>
 							<input onChange={this.onChange.bind(this)} type="text" className="form-control" placeholder="Ship name" />
+							<label className="left-spacer">
+								<a onClick={this.toggleSort} className={className}></a>
+							</label>
 						</div>
 					</form>
 					<ol id="starships">
@@ -77,5 +88,9 @@ export default React.createClass({
 				</div>
 			)
 		}
+	},
+
+	toggleSort: function() {
+		actions.toggleSort();
 	}
 });
