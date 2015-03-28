@@ -20,27 +20,25 @@ export default {
 		})
 	},
 
+	getStarshipsFromRest: function(pageNum, callback) {
+		request.get("http://swapi.co/api/starships/?page=" + pageNum).end((err, res) => {
+			callback(err, res.body);
+		});
+	},
+
 	getStarships: function() {
 		async.parallel({
-			one: function(callback) {
-				request.get("http://swapi.co/api/starships/?page=1").end((err, res) => {
-					callback(err, res.body);
-				});
+			one: callback => {
+				this.getStarshipsFromRest(1, callback)
 			},
-			two: function(callback) {
-				request.get("http://swapi.co/api/starships/?page=2").end((err, res) => {
-					callback(err, res.body);
-				});	
+			two: callback => {
+				this.getStarshipsFromRest(2, callback)
 			},
-			three: function(callback) {
-				request.get("http://swapi.co/api/starships/?page=3").end((err, res) => {
-					callback(err, res.body);
-				});
+			three: callback => {
+				this.getStarshipsFromRest(3, callback)
 			},
-			four: function(callback) {
-				request.get("http://swapi.co/api/starships/?page=4").end((err, res) => {
-					callback(err, res.body);
-				});
+			four: callback => {
+				this.getStarshipsFromRest(4, callback)
 			}
 		}, function(err, results) {
 			var res = [];
