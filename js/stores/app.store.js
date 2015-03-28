@@ -7,6 +7,7 @@ var EventEmitter = events.EventEmitter;
 var CHANGE_EVENT = "change";
 
 var starship = {};
+var starships = require('./../../mock/starships.js');
 
 var _setStarship = function(ship) {
 	starship = ship;
@@ -23,6 +24,10 @@ var AppStore = _.extend(EventEmitter.prototype, {
 
 	removeChangeListener: function(callback) {
 		this.removeListener(CHANGE_EVENT, callback);
+	},
+
+	getStarships: function() {
+		return starships;
 	},
 
 	dispatcherIndex: dispatcher.register(payload => {
