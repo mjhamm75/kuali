@@ -1,5 +1,6 @@
 import React from 'react';
 import store from './../stores/app.store.js';
+import utils from './../utils/app.utils.js';
 import _ from 'lodash';
 
 function getStarship() {
@@ -42,7 +43,7 @@ export default React.createClass({
 					<dt>Class</dt>
 					<dd>{starship.starship_class}</dd>
 					<dt>Cost</dt>
-					<dd>{starship.cost_in_credits}</dd>
+					<dd>{utils.formatCurrency(starship.cost_in_credits)}</dd>
 				</dl>
 			)
 		}
