@@ -20,6 +20,14 @@ export default React.createClass({
 		});
 	},
 
+	formatCurrency: function(amount) {
+		if(amount === "unknown") {
+			return "Unknown"
+		} else {
+			return numeral(amount).format('$0,0.00')
+		}
+	},
+
 	getInitialState: function() {
 		return {
 			starships: getStarships()
@@ -45,7 +53,7 @@ export default React.createClass({
 			var starshipsDOM = starships.map((ship, i) => {
 				return (
 					<li key={i}>
-						<div className="cost">{numeral(ship.cost_in_credits).format('$0,0.00')}</div>
+						<div className="cost">{this.formatCurrency(ship.cost_in_credits)}</div>
 						<dl onClick={this.handleClick.bind(this, ship.url)}>
 							<dt>Name</dt>
 							<dd>{ship.name}</dd>
