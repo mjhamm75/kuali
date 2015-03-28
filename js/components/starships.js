@@ -1,8 +1,9 @@
 import React from 'react';
-import Pilots from './pilots.js';
+
 import actions from './../actions/app.actions.js';
+import Pilots from './pilots.js';
 import store from './../stores/app.store.js';
-import numeral from 'numeral';
+import utils from './../utils/app.utils.js';
 import _ from 'lodash';
 
 function getStarships() {
@@ -18,14 +19,6 @@ export default React.createClass({
 		this.setState({
 			starships: getStarships()
 		});
-	},
-
-	formatCurrency: function(amount) {
-		if(amount === "unknown") {
-			return "Unknown"
-		} else {
-			return numeral(amount).format('$0,0.00')
-		}
 	},
 
 	getInitialState: function() {
@@ -53,7 +46,7 @@ export default React.createClass({
 			var starshipsDOM = starships.map((ship, i) => {
 				return (
 					<li key={i}>
-						<div className="cost">{this.formatCurrency(ship.cost_in_credits)}</div>
+						<div className="cost">{utils.formatCurrency(ship.cost_in_credits)}</div>
 						<dl onClick={this.handleClick.bind(this, ship.url)}>
 							<dt>Name</dt>
 							<dd>{ship.name}</dd>
