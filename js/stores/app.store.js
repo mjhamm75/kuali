@@ -29,6 +29,7 @@ var _setStarship = function(ship) {
 }
 
 var _setStarships = function(ships) {
+	unfilteredList = _.clone(ships);
 	starships = ships;
 }
 
@@ -83,6 +84,12 @@ var AppStore = _.extend(EventEmitter.prototype, {
 				break
 			case constants.RESET_STARSHIP:
 				_resetStarship();
+				break;
+			case constants.SET_PILOT:
+				_setPilot(action.pilot);
+				break;
+			case constants.FILTER_SHIPS: 
+				_filterShips(action.filter);
 				break;
 		}
 

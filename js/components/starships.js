@@ -21,6 +21,10 @@ export default React.createClass({
 		});
 	},
 
+	onChange: function(element) {
+		actions.filterStarships(element.target.value);
+	},
+
 	getInitialState: function() {
 		return {
 			starships: getStarships()
@@ -44,7 +48,7 @@ export default React.createClass({
 			)
 		} else {
 			var starshipsDOM = starships.map((ship, i) => {
-				return (
+				return (						
 					<li key={i}>
 						<div className="cost">{utils.formatCurrency(ship.cost_in_credits)}</div>
 						<dl onClick={this.handleClick.bind(this, ship.url)}>
@@ -59,9 +63,17 @@ export default React.createClass({
 				)
 			});
 			return (
-				<ol id="starships">
-					{starshipsDOM}
-				</ol>
+				<div>
+					<form className="form-inline spacer">
+						<div className="form-group">
+							<label className="right-spacer">Ship name</label>
+							<input onChange={this.onChange.bind(this)} type="text" className="form-control" placeholder="Ship name" />
+						</div>
+					</form>
+					<ol id="starships">
+						{starshipsDOM}
+					</ol>
+				</div>
 			)
 		}
 	}

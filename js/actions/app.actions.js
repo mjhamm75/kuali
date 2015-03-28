@@ -4,6 +4,13 @@ import constants from './../constants/app.constants.js';
 import async from 'async';
 
 export default {
+	filterStarships: function(filterTerm) {
+		dispatcher.handleViewAction({
+			actionType: constants.FILTER_SHIPS,
+			filter: filterTerm
+		});
+	},
+
 	resetStarship: function() {
 		dispatcher.handleViewAction({
 			actionType: constants.RESET_STARSHIP
