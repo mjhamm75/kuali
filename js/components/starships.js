@@ -36,7 +36,7 @@ export default React.createClass({
 			)
 		});
 		return (
-			<ol>
+			<ol id="starships">
 				{starshipsDOM}
 			</ol>
 		)
