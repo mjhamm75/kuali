@@ -6,7 +6,7 @@ var to5 = require('6to5ify');
 var config = require('./config.js');
 
 gulp.task('browserify', function() {
-	browserify('./js/app.js', {debug: true})
+	browserify(config.app.entry, {debug: true})
 			.transform(to5)
 		    .transform(reactify)
 		    .bundle()
