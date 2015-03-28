@@ -30,6 +30,10 @@ var AppStore = _.extend(EventEmitter.prototype, {
 		return starships;
 	},
 
+	getStarship: function() {
+		return starship;
+	},
+
 	dispatcherIndex: dispatcher.register(payload => {
 		var action = payload.action;
 		switch(action.actionType) {
