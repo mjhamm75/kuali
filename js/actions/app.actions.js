@@ -6,7 +6,7 @@ export default {
 	setStarship: function(url) {
 		request.get(url).end((err, res) => {
 			dispatcher.handleViewAction({
-				action: constants.SET_STARSHIP,
+				actionType: constants.SET_STARSHIP,
 				starship: res.body
 			});
 		})
