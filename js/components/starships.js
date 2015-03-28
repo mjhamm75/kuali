@@ -1,5 +1,6 @@
 import React from 'react';
 import Pilots from './pilots.js';
+import actions from './../actions/app.actions.js';
 
 export default React.createClass({
 	getInitialState: function() {
