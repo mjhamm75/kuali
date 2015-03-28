@@ -1,12 +1,12 @@
 import React from 'react';
 import Router from 'react-router';
-import Starships from './starships.js';
-import store from './../stores/app.store.js';
+import actions from './../actions/app.actions.js';
 
 var RouteHandler = Router.RouteHandler;
 
 export default React.createClass({
 	render: function() {
+		actions.getStarships();
 		return (
 			<div>
 				<RouteHandler />
