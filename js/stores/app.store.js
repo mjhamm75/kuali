@@ -7,10 +7,14 @@ var EventEmitter = events.EventEmitter;
 var CHANGE_EVENT = "change";
 
 var starship = {};
-var starships = require('./../../mock/starships.js');
+var starships = {};
 
 var _setStarship = function(ship) {
 	starship = ship;
+}
+
+var _setStarships = function(ships) {
+	starships = ships;
 }
 
 var _resetStarship = function() {
@@ -44,6 +48,9 @@ var AppStore = _.extend(EventEmitter.prototype, {
 			case constants.SET_STARSHIP:
 				_setStarship(action.starship);
 				break;
+			case constants.SET_STARSHIPS:
+				_setStarships(action.starships);
+				break
 			case constants.RESET_STARSHIP:
 				_resetStarship();
 				break;
