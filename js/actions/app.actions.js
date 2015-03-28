@@ -1,6 +1,7 @@
 import request from 'superagent';
 import dispatcher from './../dispatchers/app.dispatcher.js';
 import constants from './../constants/app.constants.js';
+import async from 'async';
 
 export default {
 	resetStarship: function() {
@@ -20,11 +21,39 @@ export default {
 	},
 
 	getStarships: function() {
-		request.get("http://swapi.co/api/starships/").end((err, res) => {
+		async.parallel({
+			one: function(callback) {
+				request.get("http://swapi.co/api/starships/?page=1").end((err, res) => {
+					callback(err, res.body);
+				});
+			},
+			two: function(callback) {
+				request.get("http://swapi.co/api/starships/?page=2").end((err, res) => {
+					callback(err, res.body);
+				});	
+			},
+			three: function(callback) {
+				request.get("http://swapi.co/api/starships/?page=3").end((err, res) => {
+					callback(err, res.body);
+				});
+			},
+			four: function(callback) {
+				request.get("http://swapi.co/api/starships/?page=4").end((err, res) => {
+					callback(err, res.body);
+				});
+			}
+		}, function(err, results) {
+			var res = [];
+			res = res.concat(results.one.results, results.two.results, results.three.results, results.four.results);
+			var response = {
+				results: res,
+				count: res.length
+			}
+
 			dispatcher.handleViewAction({
 				actionType: constants.SET_STARSHIPS,
-				starships: res.body
+				starships: response
 			});
-		})
+		}) 
 	}
 }
