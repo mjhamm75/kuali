@@ -29,8 +29,6 @@ var _setStarship = function(ship) {
 }
 
 var _setStarships = function(ships) {
-	// var ships = require('./../../mock/starships.js');
-	// var ship2 = require('./../../mock/starshipss.js');
 	unfilteredList = _.clone(ships);
 	starships = ships;
 }
@@ -57,9 +55,8 @@ var AppStore = _.extend(EventEmitter.prototype, {
 	},
 
 	getStarships: function() {
-		if(starships.results) {
-			return starships.results
-				.sort((a, b) => {
+		if(!_.isEmpty(starships)) {
+			return starships.sort((a, b) => {
 					if(a.cost_in_credits === "unknown") {
 						return true;
 					} else if(b.cost_in_credits === "unknown") {

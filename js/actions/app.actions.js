@@ -48,12 +48,12 @@ export default {
 				this.getStarshipsFromRest(4, callback)
 			}
 		}, function(err, results) {
-			var result = results.one;
-			result.results = result.results.concat(results.two.results, results.three.results, results.four.results);
+			var ships = [];
+			ships = ships.concat(results.one.results, results.two.results, results.three.results, results.four.results)	
 
 			dispatcher.handleViewAction({
 				actionType: constants.SET_STARSHIPS,
-				starships: result
+				starships: ships
 			});
 		}) 
 	},
