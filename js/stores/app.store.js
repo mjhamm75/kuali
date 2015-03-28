@@ -13,11 +13,10 @@ var unfilteredList = {};
 
 var _filterShips = function(term) {
 	var list = _.clone(unfilteredList);
-	var results = list.results.filter(ship => {
+	starships = list.filter(ship => {
 		return ship.name.indexOf(term) != -1;
 	})
-	starships.results = results;
-	starships.count = results.length;
+	
 }
 
 var _setPilot = function(pil) {
