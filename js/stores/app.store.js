@@ -8,6 +8,21 @@ var CHANGE_EVENT = "change";
 
 var starship = {};
 var starships = {};
+var pilot = {};
+var unfilteredList = {};
+
+var _filterShips = function(term) {
+	var list = _.clone(unfilteredList);
+	var results = list.results.filter(ship => {
+		return ship.name.indexOf(term) != -1;
+	})
+	starships.results = results;
+	starships.count = results.length;
+}
+
+var _setPilot = function(pil) {
+	pilot = pil;
+}
 
 var _setStarship = function(ship) {
 	starship = ship;
@@ -32,6 +47,10 @@ var AppStore = _.extend(EventEmitter.prototype, {
 
 	removeChangeListener: function(callback) {
 		this.removeListener(CHANGE_EVENT, callback);
+	},
+
+	getPilot: function() {
+		return pilot;
 	},
 
 	getStarships: function() {

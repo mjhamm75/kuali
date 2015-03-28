@@ -53,5 +53,14 @@ export default {
 				starships: response
 			});
 		}) 
+	},
+
+	setPilot: function(url) {
+		request.get(url).end((err, res) => {
+			dispatcher.handleViewAction({
+				actionType: constants.SET_PILOT,
+				pilot: res.body
+			});
+		})
 	}
 }
