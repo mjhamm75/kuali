@@ -7,7 +7,7 @@ import utils from './../utils/app.utils.js';
 import _ from 'lodash';
 
 function getStarships() {
-	return store.getStarships().results;
+	return store.getStarships();
 }
 
 export default React.createClass({

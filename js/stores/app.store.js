@@ -55,18 +55,20 @@ var AppStore = _.extend(EventEmitter.prototype, {
 	},
 
 	getStarships: function() {
-		if(!_.isEmpty(starships)) {
-			starships.results = starships.results.sort((a, b) => {
-				if(a.cost_in_credits === "unknown") {
-					return false;
-				} else if (b.cost_in_credits === "unknown") {
-					return true;
-				} else {
-					return parseInt(a.cost_in_credits) > parseInt(b.cost_in_credits);
-				}
-			});
+		if(starships.results) {
+			return starships.results
+				.sort((a, b) => {
+					if(a.cost_in_credits === "unknown") {
+						return true;
+					} else if(b.cost_in_credits === "unknown") {
+						return true;
+					} else {
+						return parseInt(a.cost_in_credits) > parseInt(b.cost_in_credits);						
+					}
+				});
+		} else {
+			return [];
 		}
-		return starships;
 	},
 
 	getStarship: function() {
