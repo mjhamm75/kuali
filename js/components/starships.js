@@ -7,12 +7,13 @@ export default React.createClass({
 		}
 	},
 	render: function() {
-		var starships = this.props.starships.map((ship, i) => {
+		var starships = this.state.starships;
+		var starshipsDOM = starships.map((ship, i) => {
 			return <li key={i}>{ship}</li>
 		});
 		return (
 			<ul>
-				{starships}
+				{starshipsDOM}
 			</ul>
 		)
 	}
