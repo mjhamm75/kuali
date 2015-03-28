@@ -1,4 +1,5 @@
 import React from 'react';
+import Pilots from './pilots.js';
 
 export default React.createClass({
 	getInitialState: function() {
@@ -17,7 +18,9 @@ export default React.createClass({
 						<dt>Cost</dt>
 						<dd>{ship.cost_in_credits}</dd>
 						<dt>Pilots</dt>
-						<dd>{ship.pilots}</dd>
+						<dd>
+							<Pilots pilots={ship.pilots}/>
+						</dd>
 					</dl>
 				</li>
 			)
