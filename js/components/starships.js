@@ -15,6 +15,7 @@ export default React.createClass({
 	},
 	handleClick: function(url) {
 		actions.setStarship(url);
+		location.hash = "#/starship";
 	},
 	render: function() {
 		var starships = this.state.starships;
