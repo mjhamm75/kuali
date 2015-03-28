@@ -12,9 +12,9 @@ export default React.createClass({
 			return <li key={i}>{ship}</li>
 		});
 		return (
-			<ul>
+			<ol>
 				{starshipsDOM}
-			</ul>
+			</ol>
 		)
 	}
 });
