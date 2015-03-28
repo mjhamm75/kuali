@@ -1,6 +1,6 @@
 module.exports = {
 	app: {
-		entry: './js/app.js',
+		entry: './js/router.js',
 		bundle: './build',
 		bundleName: 'bundle.js'
 	},
