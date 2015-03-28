@@ -29,6 +29,8 @@ var _setStarship = function(ship) {
 }
 
 var _setStarships = function(ships) {
+	// var ships = require('./../../mock/starships.js');
+	// var ship2 = require('./../../mock/starshipss.js');
 	unfilteredList = _.clone(ships);
 	starships = ships;
 }
