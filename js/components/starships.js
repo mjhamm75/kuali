@@ -7,12 +7,15 @@ export default React.createClass({
 			starships: this.props.starships
 		}
 	},
+	handleClick: function(url) {
+		console.log(url);
+	},
 	render: function() {
 		var starships = this.state.starships;
 		var starshipsDOM = starships.map((ship, i) => {
 			return (
 				<li key={i}>
-					<dl>
+					<dl onClick={this.handleClick.bind(this, ship.url)}>
 						<dt>Name</dt>
 						<dd>{ship.name}</dd>
 						<dt>Cost</dt>
