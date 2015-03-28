@@ -1,9 +1,12 @@
 import React from 'react';
+import Starships from './components/starships.js';
+import mock from './../mock/starships.js';
 
 var App = React.createClass({
 	render: function() {
+		var starships = mock.results;
 		return (
-			<h1>Testing Stuff</h1>
+			<Starships starships={starships}/>
 		)
 	}
 });
