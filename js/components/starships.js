@@ -9,7 +9,7 @@ export default React.createClass({
 		}
 	},
 	handleClick: function(url) {
-		console.log(url);
+		actions.setStarship(url);
 	},
 	render: function() {
 		var starships = this.state.starships;
