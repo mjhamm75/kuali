@@ -22,7 +22,12 @@ var _filterShips = function(term) {
 		} else if(b.cost_in_credits === "unknown") {
 			return false;
 		} else {
-			return parseInt(a.cost_in_credits) < parseInt(b.cost_in_credits);
+			if(sortUp) {
+				return parseInt(a.cost_in_credits) < parseInt(b.cost_in_credits);	
+			} else {
+				return parseInt(a.cost_in_credits) > parseInt(b.cost_in_credits);
+			}
+			
 		}
 	})
 	
@@ -78,7 +83,11 @@ var AppStore = _.extend(EventEmitter.prototype, {
 					} else if(b.cost_in_credits === "unknown") {
 						return false;
 					} else {
-						return parseInt(a.cost_in_credits) < parseInt(b.cost_in_credits);
+						if(sortUp) {
+							return parseInt(a.cost_in_credits) < parseInt(b.cost_in_credits);	
+						} else {
+							return parseInt(a.cost_in_credits) > parseInt(b.cost_in_credits);
+						}
 					}
 				});
 		} else {
