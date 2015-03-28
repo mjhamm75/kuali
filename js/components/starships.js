@@ -1,11 +1,16 @@
 import React from 'react';
 import Pilots from './pilots.js';
 import actions from './../actions/app.actions.js';
+import store from './../stores/app.store.js';
+
+function getStarships() {
+	return store.getStarships().results;
+}
 
 export default React.createClass({
 	getInitialState: function() {
 		return {
-			starships: this.props.starships
+			starships: getStarships()
 		}
 	},
 	handleClick: function(url) {
