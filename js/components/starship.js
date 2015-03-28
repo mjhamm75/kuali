@@ -1,9 +1,13 @@
 import React from 'react';
+import store from './../stores/app.store.js';
 
+function getStarship() {
+	return store.getStarship();
+}
 export default React.createClass({
 	getInitialState: function() {
 		return {
-			starship: this.props.starship
+			starship: getStarship()
 		}
 	},
 
@@ -11,7 +15,7 @@ export default React.createClass({
 		var starship = this.state.starship;
 		return (
 			<div>
-				{starshipw}
+				{starship}
 			</div>
 		)
 	}
